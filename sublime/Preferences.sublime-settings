@@ -1,0 +1,30 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete_selector": "source - comment, meta.tag - punctuation.definition.tag.begin, text.html.basic",
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/User/SublimeLinter/OneDark (SL).tmTheme",
+	"font_face": "MonacoBSemi for Powerline",
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"material_theme_accent_cyan": true,
+	"material_theme_contrast_fileicon": true,
+	"overlay_scroll_bars": "enabled",
+	"tab_size": 4,
+	"theme": "Material-Theme.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
