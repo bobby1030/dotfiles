@@ -1,22 +1,19 @@
 source ~/antigen/antigen.zsh
 
 # Load the prezto's library.
-antigen use prezto 
+antigen use oh-my-zsh 
 
-antigen bundle sorin-ionescu/prezto modules/helper
-antigen bundle sorin-ionescu/prezto modules/utility
-antigen bundle sorin-ionescu/prezto modules/editor
-antigen bundle sorin-ionescu/prezto modules/git
-antigen bundle sorin-ionescu/prezto modules/completion
-antigen bundle sorin-ionescu/prezto modules/fasd
-antigen bundle sorin-ionescu/prezto modules/autosuggestions
-antigen bundle sorin-ionescu/prezto modules/prompt
+antigen bundle git
+antigen bundle npm
+antigen bundle fasd
+antigen bundle command-not-found
+antigen bundle sudo
 
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle soimort/you-get
 
 # Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme agnoster/agnoster-zsh-theme agnoster
 
 # Tell antigen that you're done.
 antigen apply
@@ -35,6 +32,8 @@ export NVM_DIR="/home/bobbyho/.nvm"
 alias dl="cd ~/Downloads"
 
 # Theme Configs
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
 DEFAULT_USER=bobbyho
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /home/bobbyho/.yarn-config/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /home/bobbyho/.yarn-config/global/node_modules/tabtab/.completions/yarn.zsh
