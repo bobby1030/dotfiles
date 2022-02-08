@@ -45,7 +45,7 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin
 
-export PATH="/usr/local/stata14:$PATH"
+export PATH="/usr/local/stata17:$PATH"
 
 export VISUAL="nano"
 export EDITOR="nano"
