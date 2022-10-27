@@ -1,0 +1,15 @@
+# Build with `antibody bundle < ~/.zsh_plugins > ~/.zsh_plugins.sh`
+
+ohmyzsh/ohmyzsh
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/z
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/sudo
+
+zsh-users/zsh-autosuggestions
+#zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
+
+mafredri/zsh-async
+sindresorhus/pure

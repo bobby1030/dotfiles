@@ -1,22 +1,27 @@
-source ~/antigen/antigen.zsh
+#source <(antibody init)
 
-# Load the prezto's library.
-antigen use oh-my-zsh 
+#antibody bundle < ~/.zsh_plugins
 
-antigen bundle git
-antigen bundle npm
-antigen bundle fasd
-antigen bundle command-not-found
-antigen bundle sudo
+source ~/.zsh_plugins.sh
 
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
+# Load the oh-my-zsh library
+# antigen use ohmyzsh/ohmyzsh 
 
-# Load the theme.
-antigen theme agnoster/agnoster-zsh-theme agnoster
+# antigen bundle git
+# antigen bundle npm
+# antigen bundle z
+# antigen bundle command-not-found
+# antigen bundle sudo
 
-# Tell antigen that you're done.
-antigen apply
+# antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-syntax-highlighting
+
+# # Load the theme.
+# antigen bundle mafredri/zsh-async
+# antigen bundle sindresorhus/pure
+
+# # Tell antigen that you're done.
+# antigen apply
 
 # Load TMUX automatically
 tmux attach &> /dev/null
@@ -25,15 +30,26 @@ if [[ ! $TERM =~ screen ]]; then
     exec tmux
 fi
 
-export NVM_DIR="/home/bobbyho/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Aliases
 alias dl="cd ~/Downloads"
 
 # Theme Configs
 DEFAULT_USER=bobbyho
 
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /home/bobbyho/.yarn-config/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /home/bobbyho/.yarn-config/global/node_modules/tabtab/.completions/yarn.zsh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# export PATH=~/.yarn/bin:$PATH
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin
+
+export PATH="/usr/local/stata17:$PATH"
+
+export VISUAL="nano"
+export EDITOR="nano"
+
+export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+export PATH=$PATH:$HOME/Android/Sdk/emulator
+export PATH="$PATH:$HOME/.spicetify"
