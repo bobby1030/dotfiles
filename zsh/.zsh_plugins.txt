@@ -1,0 +1,17 @@
+# Build with `antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh`
+
+ohmyzsh/ohmyzsh
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/z
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/docker
+
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting
+
+mafredri/zsh-async
+sindresorhus/pure
+
+conda-incubator/conda-zsh-completion
