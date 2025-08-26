@@ -9,6 +9,12 @@ SRC ?= $(HOME)/.local/src
 # Search PATH for executables
 export PATH := $(PREFIX)/bin:$(PATH)
 
+# Whether to install zsh into local directory
+INSTALL_ZSH ?= $(if $(shell which zsh),0,1)
+
+# Whether to install tmux to local directory
+INSTALL_TMUX ?= $(if $(shell which tmux),0,1)
+
 all: mkdirs install-stow install-uv zsh tmux
 
 mkdirs:
@@ -37,7 +43,7 @@ $(HOME)/.antidote:
 
 install-zsh:
     # Build and install zsh
-ifeq ($(shell which zsh),)
+ifeq ($(INSTALL_ZSH),1)
 		@echo "zsh not found, building and installing from source..."
 		wget "https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.0.2-test.tar.gz" -O $(SRC)/zsh-5.9.0.2-test.tar.gz
 		tar -xf $(SRC)/zsh-5.9.0.2-test.tar.gz -C $(SRC)
@@ -66,7 +72,7 @@ ifeq ($(shell which uv),)
 
 install-tmux:
     # Build and install tmux
-ifeq ($(shell which tmux),)
+ifeq ($(INSTALL_TMUX),1)
 		@echo "tmux not found, installing static build of tmux from mjakob-gh/build-static-tmux..."
 		wget "https://github.com/mjakob-gh/build-static-tmux/releases/download/v3.5d/tmux.linux-amd64.stripped.gz" -O $(SRC)/tmux.gz
 		gunzip -c $(SRC)/tmux.gz > $(SRC)/tmux && chmod +x $(SRC)/tmux && mv $(SRC)/tmux $(PREFIX)/bin/tmux
