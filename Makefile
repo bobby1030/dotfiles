@@ -23,9 +23,9 @@ mkdirs:
 install-stow: mkdirs
 ifeq ($(shell which stow),)
 		@echo "Installing GNU stow..."
-		wget "http://ftpmirror.gnu.org/gnu/stow/stow-latest.tar.gz" -O $(SRC)/stow-latest.tar.gz
-		tar -xf $(SRC)/stow-latest.tar.gz -C $(SRC)
-		cd $(SRC)/stow-* && ./configure --prefix=$(PREFIX) && make && make install
+		wget "http://ftpmirror.gnu.org/gnu/stow/stow-2.4.1.tar.gz" -O $(SRC)/stow-2.4.1.tar.gz
+		tar -xf $(SRC)/stow-2.4.1.tar.gz -C $(SRC)
+		cd $(SRC)/stow-2.4.1 && ./configure --prefix=$(PREFIX) && make && make install
     else
 		@echo "GNU stow is already installed."
     endif
@@ -41,7 +41,7 @@ ifeq ($(shell which zsh),)
 		@echo "zsh not found, building and installing from source..."
 		wget "https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.0.2-test.tar.gz" -O $(SRC)/zsh-5.9.0.2-test.tar.gz
 		tar -xf $(SRC)/zsh-5.9.0.2-test.tar.gz -C $(SRC)
-		cd $(SRC)/zsh-zsh-* && ./Util/preconfig && ./configure --prefix=$(PREFIX) && make && make install.bin install.modules install.fns
+		cd $(SRC)/zsh-zsh-5.9.0.2-test && ./Util/preconfig && ./configure --prefix=$(PREFIX) && make && make install.bin install.modules install.fns
     else
 		@echo "zsh is already installed."
     endif
