@@ -55,9 +55,9 @@ zsh: $(HOME)/.antidote install-stow install-zsh
 
     # Tips for changing the login shell to zsh
 	@echo "To change your login shell to zsh, run the following command:" \
-	"\n  chsh -s $(shell which zsh)" \
+	"\n  chsh -s $$(which zsh)" \
 	"\n\nOR put the following line in your ~/.profile to launch zsh on login:" \
-	"\n  [ -f $(PREFIX)/bin/zsh ] && exec $(PREFIX)/bin/zsh -l"
+	"\n  [ -f $$(which zsh) ] && exec $$(which zsh) -l"
 
 install-uv:
 ifeq ($(shell which uv),)
