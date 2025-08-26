@@ -1,2 +1,1 @@
-# rcfiles
-My config files
+# dotfiles
