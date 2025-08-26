@@ -1,4 +1,4 @@
-.PHONY: mkdirs install-stow zsh clean
+.PHONY: all mkdirs install-stow install-zsh zsh install-uv install-tmux tmux clean
 
 # Home directory
 HOME ?= ~
@@ -9,7 +9,7 @@ SRC ?= $(HOME)/.local/src
 # Search PATH for executables
 export PATH := $(PREFIX)/bin:$(PATH)
 
-all: mkdirs install-stow zsh
+all: mkdirs install-stow install-zsh install-uv install-tmux
 
 mkdirs:
 	mkdir -p $(SRC)
@@ -35,7 +35,7 @@ $(HOME)/.antidote:
 	@echo "Installing zsh/antidote..."
 	git clone --depth=1 "https://github.com/mattmc3/antidote.git" $(HOME)/.antidote
 
-zsh: $(HOME)/.antidote install-stow
+install-zsh:
     # Build and install zsh
 ifeq ($(shell which zsh),)
 		@echo "zsh not found, building and installing from source..."
@@ -46,6 +46,7 @@ ifeq ($(shell which zsh),)
 		@echo "zsh is already installed."
     endif
 
+zsh: $(HOME)/.antidote install-stow install-zsh
     # Stow zsh configs
 	stow --target=$(HOME) zsh
 
@@ -58,6 +59,32 @@ ifeq ($(shell which zsh),)
 	"\n\nOR put the following line in your ~/.profile to launch zsh on login:" \
 	"\n  [ -f $(PREFIX)/bin/zsh ] && exec $(PREFIX)/bin/zsh -l"
 
+install-uv:
+ifeq ($(shell which uv),)
+	wget -O - https://astral.sh/uv/install.sh | sh
+    endif
+
+install-tmux:
+    # Build and install tmux
+ifeq ($(shell which tmux),)
+		@echo "tmux not found, installing static build of tmux from mjakob-gh/build-static-tmux..."
+		wget "https://github.com/mjakob-gh/build-static-tmux/releases/download/v3.5d/tmux.linux-amd64.stripped.gz" -O $(SRC)/tmux.gz
+		gunzip $(SRC)/tmux.gz && chmod +x $(SRC)/tmux && mv $(SRC)/tmux $(PREFIX)/bin/tmux
+    else
+		@echo "tmux is already installed."
+    endif
+
+~/.tmux/plugins/tpm:
+    # Install tmux plugin manager
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+tmux: install-stow install-tmux install-uv ~/.tmux/plugins/tpm
+    # Stow tmux configs
+	stow --target=$(HOME) tmux
+
+    # Install powerline
+	uv tool install powerline-status
+
 clean:
     # Remove source files
 	rm -rf $(SRC)/*
@@ -65,3 +92,4 @@ clean:
 	rm -rf $(HOME)/.antidote
     # Remove stow symlinks
 	stow --target=$(HOME) -D zsh
+	stow --target=$(HOME) -D tmux
