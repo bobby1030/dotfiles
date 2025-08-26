@@ -9,7 +9,7 @@ SRC ?= $(HOME)/.local/src
 # Search PATH for executables
 export PATH := $(PREFIX)/bin:$(PATH)
 
-all: mkdirs install-stow install-zsh install-uv install-tmux
+all: mkdirs install-stow install-uv zsh tmux
 
 mkdirs:
 	mkdir -p $(SRC)
