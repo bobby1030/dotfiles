@@ -35,7 +35,7 @@ ifeq ($(shell which zsh),)
 		@echo "zsh not found, building and installing from source..."
 		wget "https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.0.2-test.tar.gz" -O $(SRC)/zsh-5.9.0.2-test.tar.gz
 		tar -xf $(SRC)/zsh-5.9.0.2-test.tar.gz -C $(SRC)
-		cd $(SRC)/zsh-zsh-* && ./Util/preconfig && ./configure --prefix=$(PREFIX) && make && make install
+		cd $(SRC)/zsh-zsh-* && ./Util/preconfig && ./configure --prefix=$(PREFIX) && make && make install.bin install.modules install.fns
     else
 		@echo "zsh is already installed."
     endif
