@@ -13,5 +13,3 @@ zdharma-continuum/fast-syntax-highlighting
 
 mafredri/zsh-async
 sindresorhus/pure
-
-conda-incubator/conda-zsh-completion
