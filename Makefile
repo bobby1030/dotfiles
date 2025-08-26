@@ -7,6 +7,8 @@ PREFIX ?= $(HOME)/.local
 # Source directory for downloaded packages
 SRC ?= $(HOME)/.local/src
 
+all: mkdirs install-stow zsh
+
 mkdirs:
 	mkdir -p $(SRC)
 	mkdir -p $(PREFIX)
@@ -27,7 +29,7 @@ $(HOME)/.antidote:
 	@echo "Installing zsh/antidote..."
 	git clone --depth=1 "https://github.com/mattmc3/antidote.git" $(HOME)/.antidote
 
-zsh: $(HOME)/.antidote
+zsh: $(HOME)/.antidote install-stow
     # Build and install zsh
 ifeq ($(shell which zsh),)
 		@echo "zsh not found, building and installing from source..."
