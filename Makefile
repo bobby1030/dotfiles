@@ -69,7 +69,7 @@ install-tmux:
 ifeq ($(shell which tmux),)
 		@echo "tmux not found, installing static build of tmux from mjakob-gh/build-static-tmux..."
 		wget "https://github.com/mjakob-gh/build-static-tmux/releases/download/v3.5d/tmux.linux-amd64.stripped.gz" -O $(SRC)/tmux.gz
-		gunzip $(SRC)/tmux.gz && chmod +x $(SRC)/tmux && mv $(SRC)/tmux $(PREFIX)/bin/tmux
+		gunzip -c $(SRC)/tmux.gz > $(SRC)/tmux && chmod +x $(SRC)/tmux && mv $(SRC)/tmux $(PREFIX)/bin/tmux
     else
 		@echo "tmux is already installed."
     endif
