@@ -22,7 +22,7 @@ export PATH="/usr/local/stata17:$PATH"
 export PATH=$PATH:$HOME/.cargo/bin
 
 # Load TMUX automatically
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ] && [ -z "${VSCODE_TERMINAL}" ]; then
+if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -z "${VSCODE_TERMINAL}" ]; then
     tmux attach || tmux >/dev/null 2>&1
 fi
 
