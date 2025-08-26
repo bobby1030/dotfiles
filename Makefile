@@ -6,6 +6,8 @@ HOME ?= ~
 PREFIX ?= $(HOME)/.local
 # Source directory for downloaded packages
 SRC ?= $(HOME)/.local/src
+# Search PATH for executables
+export PATH := $(PREFIX)/bin:$(PATH)
 
 all: mkdirs install-stow zsh
 
@@ -13,16 +15,20 @@ mkdirs:
 	mkdir -p $(SRC)
 	mkdir -p $(PREFIX)
 
-    # Add $(PREFIX)/bin to PATH
-	if ! echo "$$PATH" | grep -q "$(PREFIX)/bin"; then \
+    # Add $(PREFIX)/bin to PATH in .profile if not already present
+	if ! grep -q "$(PREFIX)/bin" $(HOME)/.profile 2>/dev/null; then \
 		echo 'export PATH="$(PREFIX)/bin:$$PATH"' >> $(HOME)/.profile; \
 	fi
 
 install-stow: mkdirs
-	@echo "Installing GNU stow..."
-	wget "http://ftpmirror.gnu.org/gnu/stow/stow-latest.tar.gz" -O $(SRC)/stow-latest.tar.gz
-	tar -xf $(SRC)/stow-latest.tar.gz -C $(SRC)
-	cd $(SRC)/stow-* && ./configure --prefix=$(PREFIX) && make && make install
+ifeq ($(shell which stow),)
+		@echo "Installing GNU stow..."
+		wget "http://ftpmirror.gnu.org/gnu/stow/stow-latest.tar.gz" -O $(SRC)/stow-latest.tar.gz
+		tar -xf $(SRC)/stow-latest.tar.gz -C $(SRC)
+		cd $(SRC)/stow-* && ./configure --prefix=$(PREFIX) && make && make install
+    else
+		@echo "GNU stow is already installed."
+    endif
 
 $(HOME)/.antidote:
     # Install antidote
@@ -51,7 +57,7 @@ ifeq ($(shell which zsh),)
 	"\n  chsh -s $(shell which zsh)" \
 	"\n\nOR put the following line in your ~/.profile to launch zsh on login:" \
 	"\n  [ -f $(PREFIX)/bin/zsh ] && exec $(PREFIX)/bin/zsh -l"
-	
+
 clean:
     # Remove source files
 	rm -rf $(SRC)/*
