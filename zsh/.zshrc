@@ -21,6 +21,11 @@ export PATH="/usr/local/stata17:$PATH"
 # Rust cargo path
 export PATH=$PATH:$HOME/.cargo/bin
 
+# uv autocomplete
+if [ -x "$(command -v uv)" ]; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
+
 # Load TMUX automatically
 if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -z "${VSCODE_TERMINAL}" ]; then
     tmux attach || tmux >/dev/null 2>&1
