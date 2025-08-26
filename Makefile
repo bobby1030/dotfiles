@@ -1,4 +1,4 @@
-.PHONY: all mkdirs install-stow install-zsh zsh install-uv install-tmux tmux clean
+.PHONY: all mkdirs install-stow install-zsh zsh install-uv install-tmux tmux others clean
 
 # Home directory
 HOME ?= ~
@@ -15,7 +15,7 @@ INSTALL_ZSH ?= $(if $(shell which zsh),0,1)
 # Whether to install tmux to local directory
 INSTALL_TMUX ?= $(if $(shell which tmux),0,1)
 
-all: mkdirs install-stow install-uv zsh tmux
+all: mkdirs install-stow install-uv zsh tmux others
 
 mkdirs:
 	mkdir -p $(SRC)
@@ -90,6 +90,10 @@ tmux: install-stow install-tmux install-uv ~/.tmux/plugins/tpm
 
     # Install powerline
 	uv tool install powerline-status
+
+others:
+    # Alacritty
+	stow --target=$(HOME) alacritty
 
 clean:
     # Remove source files
