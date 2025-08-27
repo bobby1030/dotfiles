@@ -95,6 +95,9 @@ others:
     # Alacritty
 	stow --target=$(HOME) alacritty
 
+    # SSH
+	stow --target=$(HOME) ssh
+
 clean:
     # Remove source files
 	rm -rf $(SRC)/*
