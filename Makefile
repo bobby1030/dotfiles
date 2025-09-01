@@ -98,6 +98,9 @@ others:
     # SSH
 	stow --target=$(HOME) ssh
 
+	# R
+	stow --target=$(HOME) R
+
 clean:
     # Remove source files
 	rm -rf $(SRC)/*
