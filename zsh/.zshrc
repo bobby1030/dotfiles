@@ -1,6 +1,9 @@
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 source ~/.zsh_plugins.zsh
 
+# Load slurm plugin
+source ~/.zsh_plugins/slurm.plugin.zsh
+
 # Load TMUX automatically
 if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -z "${VSCODE_TERMINAL}" ]; then
     tmux attach || tmux >/dev/null 2>&1
