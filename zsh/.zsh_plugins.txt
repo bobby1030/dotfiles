@@ -8,6 +8,8 @@ ohmyzsh/ohmyzsh path:plugins/command-not-found
 ohmyzsh/ohmyzsh path:plugins/sudo
 ohmyzsh/ohmyzsh path:plugins/docker
 
+matheusml/zsh-ai
+
 zsh-users/zsh-autosuggestions
 zdharma-continuum/fast-syntax-highlighting
 
