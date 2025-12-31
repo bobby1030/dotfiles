@@ -49,7 +49,7 @@ alias si="sinfo -o '%8P %10n %.11T %.4c %.8z %.6m %12G %10l %10L %10O %20E' -S '
 # SQUEUE aliases
 ################
 # Detailed squeue
-alias sq="squeue -Su -o '%8i %10u %20j %4t %5D %20R %15b %3C %7m %11l %11L'"
+alias sq="squeue -Su -o '%8i %10u %20j %4t %5D %20R %12b %3C %7m %11l %11L'"
 # squeue only your jobs
 alias squ="sq -u `id -un`"
 # SSTAT alias to get information about your RUNNING jobs Usage: sst <jobid> OR sst <jobid>.batch (if you use 
