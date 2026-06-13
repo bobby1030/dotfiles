@@ -27,7 +27,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Stata Path
-export PATH="/usr/local/stata17:$PATH"
+export PATH="/usr/local/stata19:$PATH"
 
 # Rust cargo path
 export PATH=$PATH:$HOME/.cargo/bin
@@ -56,3 +56,7 @@ export PATH
 
 # Pixi Path
 export PATH="/home/bobbyho/.pixi/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bobbyho/.local/bin:$PATH"
