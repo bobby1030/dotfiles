@@ -42,6 +42,11 @@ if [ -x "$(command -v llama-cli)" ]; then
     eval "$(llama-cli --completion-bash)"
 fi
 
+# codex autocomplete
+if [ -x "$(command -v codex)" ]; then
+    eval "$(codex completion zsh)"
+fi
+
 # URL decode
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
