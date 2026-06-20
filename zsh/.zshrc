@@ -56,7 +56,3 @@ export PATH
 
 # Pixi Path
 export PATH="/home/bobbyho/.pixi/bin:$PATH"
-
-
-# Added by Antigravity CLI installer
-export PATH="/home/bobbyho/.local/bin:$PATH"
