@@ -48,5 +48,5 @@ enabled = true
 mods = "Control|Shift"
 
 [window.dimensions]
-columns = 133
+columns = 130
 lines = 50
