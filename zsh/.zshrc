@@ -35,6 +35,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 # uv autocomplete
 if [ -x "$(command -v uv)" ]; then
     eval "$(uv generate-shell-completion zsh)"
+    eval "$(uvx --generate-shell-completion zsh)"
 fi
 
 # llama.cpp autocomplete
